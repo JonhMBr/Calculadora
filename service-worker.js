@@ -3,7 +3,7 @@
 // IMPORTANTE: toda vez que publicar uma atualização do index.html, troque o número
 // abaixo (CACHE_NAME), senão o navegador vai continuar servindo a versão antiga do
 // cache pra quem já instalou o app.
-const CACHE_NAME = 'calculadora-v4';
+const CACHE_NAME = 'calculadora-v6';
 
 const FILES_TO_CACHE = [
   './',
