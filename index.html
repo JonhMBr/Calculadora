@@ -60,7 +60,7 @@ body>.panel .wrap{height:auto;display:block;padding:14px 12px 28px}
 .memnew{margin:2px 0 8px}
 .memlab{color:var(--muted);font-size:.74rem}
 .memcur{font-family:var(--mono);background:#f1f4f8;border:1px solid var(--line);border-radius:10px;box-shadow:var(--sh-in);
-  padding:8px 10px;margin:4px 0 8px;overflow-wrap:anywhere;min-height:40px;max-height:84px;overflow:auto}
+  padding:8px 10px;margin:4px 0 8px;width:100%;min-height:40px}
 .memrow{display:flex;gap:8px}
 .memrow input{flex:1;min-width:0}
 #vMem .hist{flex:1;min-height:0;max-height:none}
@@ -75,6 +75,37 @@ body>.panel .wrap{height:auto;display:block;padding:14px 12px 28px}
 .exprrow .ctl:active{box-shadow:inset 0 1px 0 #fff,0 0 0 transparent,0 1px 3px rgba(30,45,70,.25)}
 .keys button.tool{font-size:min(.62rem,2.5vw);line-height:1.1;padding:0 1px;color:#1e4e8c;letter-spacing:-.1px}
 .keys.ckeys{grid-template-columns:repeat(4,minmax(0,1fr))}
+#vkp{position:fixed;left:0;right:0;bottom:0;z-index:8;background:var(--bg);border-top:1px solid var(--line);
+  box-shadow:0 -6px 18px rgba(30,45,70,.18);padding:6px 10px calc(8px + env(safe-area-inset-bottom));max-width:760px;margin:0 auto}
+#vkp[hidden]{display:none}
+#vars{position:fixed;left:0;right:0;bottom:0;z-index:8;background:var(--bg);border-top:1px solid var(--line);
+  box-shadow:0 -6px 18px rgba(30,45,70,.18);padding:6px 10px calc(8px + env(safe-area-inset-bottom));max-width:760px;margin:0 auto}
+#vars[hidden]{display:none}
+#qw{position:fixed;left:0;right:0;bottom:0;z-index:8;background:var(--bg);border-top:1px solid var(--line);
+  box-shadow:0 -6px 18px rgba(30,45,70,.18);padding:6px 6px calc(8px + env(safe-area-inset-bottom));max-width:760px;margin:0 auto}
+#qw[hidden]{display:none}
+#qwRows{display:flex;flex-direction:column;gap:6px}
+.qrow{display:flex;gap:5px}
+.qrow button{flex:1;min-width:0;min-height:44px;padding:2px 0;font-size:1.05rem;background:linear-gradient(#ffffff,#e9edf2)}
+.qrow button.wide{flex:1.5}
+.qrow button.space{flex:5}
+.qrow button.ctl{background:linear-gradient(#ffe9e9,#f3bcbc);color:#a11b1b}
+.qrow button.shift.on{background:linear-gradient(#cfe0ff,#a9c4f5);color:#1e4e8c}
+.qrow button.ok{background:linear-gradient(#ffcc66,#f09a12);color:var(--accent-ink);font-weight:700}
+#varsGrid{grid-template-columns:repeat(5,minmax(0,1fr))}
+#varsGrid button{min-height:44px;font-size:1.1rem}
+#varsGrid .fn{background:linear-gradient(#eaf2ff,#cfdcf2);color:#1e4e8c;font-weight:600}
+#varsGrid .op{background:linear-gradient(#fff3dc,#f6d9a0);color:#8a4b00;border-color:#e3c387;box-shadow:inset 0 1px 0 #fff,0 3px 0 #d3b374,0 6px 10px rgba(120,80,0,.18)}
+#kbd{font-size:.95rem;font-weight:700;letter-spacing:-.5px;color:#1e4e8c}
+.vkbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;color:var(--muted);font-size:.8rem}
+.vkbar button{min-height:34px;padding:2px 12px;font-size:.85rem}
+.vkgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.vkgrid button{min-height:50px;padding:2px;font-size:1.15rem}
+.vkgrid .num{background:linear-gradient(#ffffff,#e9edf2)}
+.vkgrid .ctl{background:linear-gradient(#ffe9e9,#f3bcbc);color:#a11b1b;border-color:#e2a3a3;box-shadow:inset 0 1px 0 #fff,0 3px 0 #cf8f8f,0 6px 10px rgba(150,40,40,.18)}
+.vkgrid .eq{background:linear-gradient(#ffcc66,#f09a12);color:var(--accent-ink);font-weight:700;border-color:#d98a1b;font-size:.95rem;box-shadow:inset 0 1px 0 #ffe2a3,0 3px 0 #b86f08,0 6px 12px rgba(160,90,0,.3)}
+.vkgrid .sm{font-size:.85rem}
+#p-vol.vkopen .wrap{padding-bottom:340px}
 .keys.ckeys .wide{grid-column:span 2}
 header h1{margin:6px 0 2px;font-size:1.35rem}
 header .sub{margin:0 0 14px;color:var(--muted);font-size:.9rem}
@@ -169,7 +200,7 @@ button:disabled{opacity:.4;cursor:default;box-shadow:none}
 .seg button.on{background:linear-gradient(#ffcc66,#f09a12);color:var(--accent-ink);font-weight:600;box-shadow:inset 0 1px 0 #ffe2a3}
 .seglab{color:var(--muted);font-size:.8rem;margin-right:8px}
 .trecho{border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:10px;background:#f6f8fb;box-shadow:0 4px 12px rgba(30,45,70,.08)}
-.thead{display:flex;gap:6px;align-items:center;margin-bottom:8px}
+.thead{display:flex;gap:6px;align-items:center;justify-content:space-between;margin-bottom:8px}
 .ttitle{white-space:nowrap;color:#b45309;font-weight:600;font-size:.9rem}
 .thead input{flex:1;min-height:36px;padding:6px 10px;font-size:.9rem}
 .thead button{min-height:36px}
@@ -212,7 +243,7 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:6px 0 0}
     <div class="exprrow">
       <input id="expr" type="text" inputmode="none" autocomplete="off" autocapitalize="off" autocorrect="off"
              spellcheck="false" placeholder="Escreva a fórmula completa e pressione =" aria-label="Fórmula">
-      <button id="kbd" class="icon" type="button" title="Alternar teclado do sistema (celular)">⌨</button>
+      <button id="kbd" class="icon" type="button" title="Variáveis (x, y, z, r, D, ∆…)" aria-label="Variáveis">x∆</button>
       <button id="openMem" class="icon" type="button" title="Fórmulas memorizadas">★</button>
     </div>
     <div id="editbar" class="editbar" hidden>
@@ -254,10 +285,10 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:6px 0 0}
     <!-- vista: fórmulas memorizadas (substitui o teclado) -->
     <div class="view" id="vMem" hidden>
       <div class="memnew">
-        <small class="memlab">Fórmula atual</small>
-        <div id="memCur" class="memcur">—</div>
+        <small class="memlab">Fórmula (toque para escrever)</small>
+        <input id="memExpr" class="memcur" type="text" inputmode="none" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="ex.: π × D^2 ÷ 4" aria-label="Fórmula a memorizar">
         <div class="memrow">
-          <input id="memName" type="text" placeholder="Nome (opcional)" autocomplete="off" autocapitalize="sentences">
+          <input id="memName" type="text" inputmode="none" placeholder="Nome (opcional)" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
           <button id="memSave" type="button">Salvar</button>
         </div>
       </div>
@@ -266,7 +297,7 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:6px 0 0}
       <div class="toolrow"><button class="goback" type="button">← Voltar à calculadora</button></div>
     </div>
 
-    <footer>Versão 08112026.30</footer>
+    <footer>Versão 08112026.31</footer>
   </section>
 
 </div>
@@ -301,6 +332,21 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:6px 0 0}
       Toque em um valor para enviá-lo à calculadora.</p>
   </section>
   </div>
+</div>
+<!-- TECLADO NUMÉRICO PRÓPRIO (campos do volume de poço, só em telas de toque) -->
+<div id="vkp" hidden>
+  <div class="vkbar"><span id="vkLab"></span><button type="button" class="vkclose">Fechar ⌄</button></div>
+  <div class="vkgrid" id="vkgrid"></div>
+</div>
+<!-- TECLADO DE VARIÁVEIS (campo da fórmula) -->
+<div id="vars" hidden>
+  <div class="vkbar"><span>Números, operações e variáveis</span><button type="button" class="vkclose" id="varsClose">Fechar ⌄</button></div>
+  <div class="vkgrid" id="varsGrid"></div>
+</div>
+<!-- TECLADO QWERTY (nome da fórmula) -->
+<div id="qw" hidden>
+  <div class="vkbar"><span>Nome da fórmula</span><button type="button" class="vkclose" id="qwClose">Fechar ⌄</button></div>
+  <div id="qwRows"></div>
 </div>
 <div id="toast" role="status"></div>
 
@@ -590,6 +636,7 @@ function openPanel(id){
 function closePanels(fromPop){
   const any=panels.some(p=>!p.hidden);
   panels.forEach(p=>p.hidden=true);
+  if(typeof vkHide==='function') vkHide();
   document.body.style.overflow='';
   if(any&&!fromPop){try{if(history.state&&history.state.panel) history.back();}catch(e){}}
 }
@@ -598,6 +645,7 @@ const VIEWS={calc:'vCalc',conv:'vConv',hist:'vHist',mem:'vMem'};
 const TITLES={calc:'',conv:'Conversões',hist:'Histórico',mem:'Fórmulas memorizadas'};
 function showView(v,fromPop){
   Object.keys(VIEWS).forEach(k=>{document.getElementById(VIEWS[k]).hidden=(k!==v);});
+  if(window.varsHide) window.varsHide();
   $('#ttl').textContent=TITLES[v];
   if(!fromPop){
     try{
@@ -606,7 +654,7 @@ function showView(v,fromPop){
     }catch(e){}
   }
   if(v==='conv') convRender();
-  if(v==='mem') renderMem();
+  if(v==='mem'){$('#memExpr').value=f.value.trim();renderMem();}
 }
 window.addEventListener('popstate',()=>{closePanels(true);showView('calc',true);});
 $('#openMem').addEventListener('click',()=>showView('mem'));
@@ -832,11 +880,87 @@ function doClear(){
 setMode(mode);
 
 f.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();doEq();}});
-$('#kbd').addEventListener('click',()=>{
-  f.inputMode=(f.inputMode==='none')?'text':'none';
-  f.blur();f.focus();
-  toast(f.inputMode==='none'?'Teclado do sistema desligado':'Teclado do sistema ligado');
-});
+/* teclado de variáveis próprio: o campo da fórmula nunca abre o teclado do sistema */
+(function(){
+  const VARS=[['x','y','z','r','D'],['∆','d','h','L','P'],['7','8','9','÷','⌫'],['4','5','6','×','('],['1','2','3','−',')'],['0',',','^','+','espaço']];
+  const OPS='÷×−+^()';
+  const g=$('#varsGrid'),box=$('#vars');
+  VARS.flat().forEach(k=>{
+    const b=document.createElement('button');b.type='button';b.dataset.k=k;b.textContent=k;
+    b.className=k==='⌫'?'ctl':(OPS.indexOf(k)>=0?'op':(/^[a-zA-Z∆]$/.test(k)?'fn':'num'));
+    if(k==='espaço')b.classList.add('sm');
+    g.appendChild(b);
+  });
+  ['pointerdown','mousedown'].forEach(ev=>box.addEventListener(ev,e=>e.preventDefault()));
+  let tgt=f;
+  function put(t){
+    const s=(tgt.selectionStart==null)?tgt.value.length:tgt.selectionStart;
+    const e=(tgt.selectionEnd==null)?s:tgt.selectionEnd;
+    tgt.value=tgt.value.slice(0,s)+t+tgt.value.slice(e);
+    tgt.focus({preventScroll:true});tgt.setSelectionRange(s+t.length,s+t.length);
+  }
+  g.addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b)return;
+    const k=b.dataset.k;
+    if(k==='⌫'){
+      let s=tgt.selectionStart,en=tgt.selectionEnd;if(s==null){s=en=tgt.value.length;}
+      if(s===en&&s>0)s--;
+      tgt.value=tgt.value.slice(0,s)+tgt.value.slice(en);
+      tgt.focus({preventScroll:true});tgt.setSelectionRange(s,s);
+    }else put(k==='espaço'?' ':k);
+  });
+  function show(v){box.hidden=!v;}
+  $('#kbd').addEventListener('click',()=>{tgt=f;show(box.hidden);f.focus({preventScroll:true});});
+  $('#memExpr').addEventListener('click',()=>{tgt=$('#memExpr');$('#qw').hidden=true;show(true);}); // tela ★: tocar no campo abre o teclado do app
+  $('#memExpr').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();saveFormula();}});
+  /* QWERTY do app para o nome */
+  const qw=$('#qw'),qr=$('#qwRows'),nm=$('#memName');
+  let shift=true;
+  const QROWS=[['1','2','3','4','5','6','7','8','9','0'],['q','w','e','r','t','y','u','i','o','p'],['a','s','d','f','g','h','j','k','l','ç'],['⇧','z','x','c','v','b','n','m','⌫'],['-',',','.','espaço','OK']];
+  QROWS.forEach(r=>{
+    const d=document.createElement('div');d.className='qrow';
+    r.forEach(k=>{
+      const b=document.createElement('button');b.type='button';b.dataset.k=k;b.textContent=k;
+      if(k==='⇧'){b.classList.add('shift','wide');b.textContent='⇧';}
+      else if(k==='⌫'){b.classList.add('ctl','wide');}
+      else if(k==='espaço'){b.classList.add('space');}
+      else if(k==='OK'){b.classList.add('ok','wide');}
+      d.appendChild(b);
+    });
+    qr.appendChild(d);
+  });
+  function qLabels(){
+    qr.querySelectorAll('button').forEach(b=>{
+      const k=b.dataset.k;
+      if(/^[a-zç]$/.test(k)) b.textContent=shift?k.toUpperCase():k;
+    });
+    qr.querySelector('.shift').classList.toggle('on',shift);
+  }
+  function showQ(v){qw.hidden=!v;if(v){box.hidden=true;shift=!nm.value;qLabels();}}
+  ['pointerdown','mousedown'].forEach(ev=>qw.addEventListener(ev,e=>e.preventDefault()));
+  qr.addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b)return;
+    const k=b.dataset.k;
+    tgt=nm;
+    if(k==='⇧'){shift=!shift;qLabels();return;}
+    if(k==='OK'){showQ(false);return;}
+    if(k==='⌫'){
+      let s=nm.selectionStart,en=nm.selectionEnd;if(s==null){s=en=nm.value.length;}
+      if(s===en&&s>0)s--;
+      nm.value=nm.value.slice(0,s)+nm.value.slice(en);
+      nm.focus({preventScroll:true});nm.setSelectionRange(s,s);
+      if(!nm.value){shift=true;qLabels();}
+      return;
+    }
+    if(k==='espaço'){put(' ');return;}
+    put(/^[a-zç]$/.test(k)&&shift?k.toUpperCase():k);
+    if(shift&&/^[a-zç]$/.test(k)){shift=false;qLabels();}
+  });
+  nm.addEventListener('click',()=>{tgt=nm;showQ(true);});
+  $('#qwClose').addEventListener('click',()=>showQ(false));
+  $('#varsClose').addEventListener('click',()=>show(false));
+  window.varsHide=()=>{show(false);qw.hidden=true;};
+})();
 $('#replace').addEventListener('click',()=>{
   const h=hist.find(x=>x.id===editingId);if(!h)return;
   const r=compute();if(!r)return;
@@ -872,9 +996,6 @@ let forms=store.get(MKEY,[]);
 if(!Array.isArray(forms)) forms=[];
 function saveForms(){store.set(MKEY,forms.slice(0,200));}
 function renderMem(){
-  const cur=f.value.trim();
-  $('#memCur').textContent=cur||'— digite uma fórmula na calculadora para salvar';
-  $('#memSave').disabled=!cur;
   const box=$('#memList');box.textContent='';
   if(!forms.length){box.innerHTML='<div class="empty">Nenhuma fórmula memorizada ainda.</div>';return;}
   forms.forEach(m=>{
@@ -896,11 +1017,11 @@ function renderMem(){
   });
 }
 function saveFormula(){
-  const src=f.value.trim();
-  if(!src){toast('Digite uma fórmula primeiro');return;}
+  const src=$('#memExpr').value.trim();
+  if(!src){toast('Escreva uma fórmula primeiro');return;}
   const name=$('#memName').value.trim();
   forms.unshift({id:Date.now()*1000+Math.floor(Math.random()*1000),name,expr:src});
-  saveForms();$('#memName').value='';renderMem();toast('Fórmula memorizada');
+  saveForms();$('#memName').value='';$('#memExpr').value='';renderMem();toast('Fórmula memorizada');
 }
 $('#memSave').addEventListener('click',saveFormula);
 $('#memName').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();saveFormula();}});
@@ -969,18 +1090,19 @@ function renumber(){
 function lenLabels(){
   document.querySelectorAll('.lLabel').forEach(l=>{l.textContent='Comprimento ('+(unit==='ft'?'ft':'m')+')';});
 }
+const VK_ON=(window.matchMedia&&matchMedia('(pointer: coarse)').matches)||('ontouchstart' in window);
+const NM=VK_ON?'none':'text', NML=VK_ON?'none':'decimal';
 function addTrecho(){
   const t={id:++tid,D:'',dext:'',dint:'',L:'',r:null};
   const el=document.createElement('div');el.className='trecho';
   el.innerHTML=
     '<div class="thead"><span class="ttitle"></span>'+
-    '<input type="text" class="tname" placeholder="descrição (opcional)" autocomplete="off">'+
     '<button type="button" class="icon tdel" title="Remover trecho">×</button></div>'+
     '<div class="grid4">'+
-    '<div><label>Ø int. poço/revestimento (pol, opcional)</label><input type="text" data-k="D" inputmode="text" placeholder="vazio = só a coluna"></div>'+
-    '<div><label>Ø ext. da coluna (pol)</label><input type="text" data-k="dext" inputmode="text" placeholder="ex.: 4 1/2"></div>'+
-    '<div><label>Ø int. da coluna (pol)</label><input type="text" data-k="dint" inputmode="text" placeholder="vazio ou 0 = maciça"></div>'+
-    '<div><label class="lLabel"></label><input type="text" data-k="L" inputmode="decimal" placeholder="ex.: 1000"></div>'+
+    '<div><label>Ø int. poço/revestimento (pol, opcional)</label><input type="text" data-k="D" data-num inputmode="'+NM+'" placeholder="vazio = só a coluna"></div>'+
+    '<div><label>Ø ext. da coluna (pol)</label><input type="text" data-k="dext" data-num inputmode="'+NM+'" placeholder="ex.: 4 1/2"></div>'+
+    '<div><label>Ø int. da coluna (pol)</label><input type="text" data-k="dint" data-num inputmode="'+NM+'" placeholder="vazio ou 0 = maciça"></div>'+
+    '<div><label class="lLabel"></label><input type="text" data-k="L" data-num inputmode="'+NML+'" placeholder="ex.: 1000"></div>'+
     '</div><div class="tmsg"></div>'+
     '<table class="res" hidden><thead><tr><th></th><th>bbl</th></tr></thead><tbody></tbody></table>';
   t.el=el;
@@ -993,6 +1115,64 @@ function addTrecho(){
   });
   trechos.push(t);$('#trechos').appendChild(el);
   renumber();lenLabels();updateTotals();
+}
+/* teclado numérico próprio: dígitos, vírgula, espaço, barra (frações), sinal */
+let vkCur=null;
+(function vkInit(){
+  const KS=[['7','8','9','⌫'],['4','5','6','espaço'],['1','2','3','/'],['0',',','-','Próx. →']];
+  const g=$('#vkgrid');
+  KS.flat().forEach(k=>{
+    const b=document.createElement('button');b.type='button';b.dataset.k=k;b.textContent=k;
+    b.className=k==='⌫'?'ctl':(k==='Próx. →'?'eq':'num');
+    if(k==='espaço'||k==='Próx. →') b.classList.add('sm');
+    g.appendChild(b);
+  });
+  const kp=$('#vkp');
+  ['pointerdown','mousedown'].forEach(ev=>kp.addEventListener(ev,e=>e.preventDefault())); // mantém o foco no campo
+  g.addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b||!vkCur)return;
+    vkPress(b.dataset.k);
+  });
+  kp.querySelector('.vkclose').addEventListener('click',()=>{if(vkCur)vkCur.blur();vkHide();});
+})();
+function vkShow(el){
+  vkCur=el;
+  const lab=el.closest('div')&&el.closest('div').querySelector('label');
+  $('#vkLab').textContent=lab?lab.textContent:'';
+  $('#vkp').hidden=false;$('#p-vol').classList.add('vkopen');
+  setTimeout(()=>{try{el.scrollIntoView({block:'center',behavior:'smooth'});}catch(e){}},60);
+}
+function vkHide(){vkCur=null;$('#vkp').hidden=true;$('#p-vol').classList.remove('vkopen');}
+function vkPress(k){
+  const el=vkCur;if(!el)return;
+  if(k==='Próx. →'){
+    const all=[...document.querySelectorAll('#p-vol input[data-num]')];
+    const i=all.indexOf(el);
+    if(i>=0&&i<all.length-1){all[i+1].focus();}
+    else{el.blur();vkHide();}
+    return;
+  }
+  let s=el.selectionStart,e=el.selectionEnd;
+  if(s==null){s=e=el.value.length;}
+  if(k==='⌫'){
+    if(s===e&&s>0) s=s-1;
+    el.value=el.value.slice(0,s)+el.value.slice(e);
+    el.setSelectionRange(s,s);
+  }else{
+    const ch=k==='espaço'?' ':k;
+    el.value=el.value.slice(0,s)+ch+el.value.slice(e);
+    el.setSelectionRange(s+ch.length,s+ch.length);
+  }
+  el.dispatchEvent(new Event('input',{bubbles:true}));
+}
+if(VK_ON){
+  $('#p-vol').addEventListener('focusin',e=>{
+    if(e.target.matches&&e.target.matches('input[data-num]')) vkShow(e.target);
+    else vkHide();
+  });
+  $('#p-vol').addEventListener('focusout',()=>{
+    setTimeout(()=>{const a=document.activeElement;if(!(a&&a.matches&&a.matches('#p-vol input[data-num]'))) vkHide();},120);
+  });
 }
 $('#addTrecho').addEventListener('click',()=>{
   addTrecho();
