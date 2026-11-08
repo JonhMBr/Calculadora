@@ -29,6 +29,7 @@ body{margin:0;background:var(--bg);color:var(--text);
 body>.wrap{height:100dvh;display:flex;flex-direction:column;padding:10px 12px}
 body>.wrap>#s2{flex:1;min-height:0;display:flex;flex-direction:column;margin-bottom:0;padding:12px}
 #s2 h2{margin-bottom:8px}
+#ttl:empty{display:none}
 #s2 .display{margin:8px 0}
 #s2 .keys{flex:1;min-height:0;grid-auto-rows:minmax(0,1fr)}
 #s2 .keys button{min-height:0;height:100%}
@@ -177,7 +178,7 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:6px 0 0}
 <div class="wrap">
   <!-- CALCULADORA (página principal) -->
   <section class="card" id="s2">
-    <h2 id="ttl">Calculadora científica</h2>
+    <h2 id="ttl"></h2>
 
     <!-- vista: calculadora -->
     <div class="view" id="vCalc">
@@ -228,7 +229,7 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;padding:6px 0 0}
       <div class="toolrow"><button class="goback" type="button">← Voltar à calculadora</button></div>
     </div>
 
-    <footer>Versão 08112026.13</footer>
+    <footer>Versão 08112026.14</footer>
   </section>
 
 </div>
@@ -567,7 +568,7 @@ function closePanels(fromPop){
 }
 /* vistas do cartão principal: calc / conv / hist */
 const VIEWS={calc:'vCalc',conv:'vConv',hist:'vHist'};
-const TITLES={calc:'Calculadora científica',conv:'Conversões',hist:'Histórico'};
+const TITLES={calc:'',conv:'Conversões',hist:'Histórico'};
 function showView(v,fromPop){
   Object.keys(VIEWS).forEach(k=>{document.getElementById(VIEWS[k]).hidden=(k!==v);});
   $('#ttl').textContent=TITLES[v];
