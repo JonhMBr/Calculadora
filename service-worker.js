@@ -3,7 +3,7 @@
 // IMPORTANTE: toda vez que publicar uma atualização do index.html, troque o número
 // abaixo (CACHE_NAME), senão o navegador vai continuar servindo a versão antiga do
 // cache pra quem já instalou o app.
-const CACHE_NAME = 'calculadora-v20';
+const CACHE_NAME = 'calculadora-v21';
 
 const FILES_TO_CACHE = [
   './',
@@ -29,11 +29,11 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Estratégia: tenta a rede primeiro (pra pegar atualizações), cai pro cache se offline.
+// Estratégia: tenta a rede primeiro (ignorando o cache HTTP do navegador, pra pegar atualizações na hora), cai pro cache se offline.
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   event.respondWith(
-    fetch(event.request)
+    fetch(event.request,{cache:'no-cache'})
       .then((response) => {
         const copy = response.clone();
         caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
